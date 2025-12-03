@@ -1,0 +1,41 @@
+# Linguagem a^n b^n c^n
+# Exemplo de fita: aaabbbccc (Deve Aceitar)
+fita aaabbbccc
+init q0
+accept qf
+
+# --- q0: Procura 'a' ---
+# Se achar 'a', marca como 'X' e vai buscar 'b'
+q0,a,q1,X,>
+# Se achar 'Y', significa que os 'a's acabaram. Vai verificar o resto.
+q0,Y,q4,Y,>
+
+# --- q1: Procura 'b' ---
+# Pula 'a' e 'Y' indo para direita
+q1,a,q1,a,>
+q1,Y,q1,Y,>
+# Achou 'b', marca 'Y' e vai buscar 'c'
+q1,b,q2,Y,>
+
+# --- q2: Procura 'c' ---
+# Pula 'b' e 'Z' indo para direita
+q2,b,q2,b,>
+q2,Z,q2,Z,>
+# Achou 'c', marca 'Z' e começa a voltar (Esquerda)
+q2,c,q3,Z,<
+
+# --- q3: Retorna para o início (Esquerda) ---
+# Volta passando por tudo até achar o 'X'
+q3,a,q3,a,<
+q3,b,q3,b,<
+q3,Y,q3,Y,<
+q3,Z,q3,Z,<
+# Encontrou o limite 'X', vira para Direita e reinicia em q0
+q3,X,q0,X,>
+
+# --- q4: Verificação Final ---
+# Garante que só sobraram Ys e Zs e termina
+q4,Y,q4,Y,>
+q4,Z,q4,Z,>
+# Se chegar no vazio (_), aceita
+q4,_,qf,_,>
