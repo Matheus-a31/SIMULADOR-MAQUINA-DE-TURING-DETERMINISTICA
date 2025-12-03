@@ -1,0 +1,50 @@
+# Linguagem: a^i b^j d^k onde j < k
+# Exemplo valido: aaabbddd (2 b's, 3 d's -> 2 < 3)
+# Exemplo invalido: aaabbdd (2 b's, 2 d's -> Igualdade nao permitida)
+
+fita aaabbddd
+init q0
+accept qf
+
+# --- q0: Ignorar A's ---
+# Se ler 'a', ignora e continua
+q0,a,q0,a,>
+# Se ler 'b', marca com X e vai buscar o 'd' correspondente (q2)
+q0,b,q2,X,>
+# Se ler 'd', significa que temos 0 b's e pelo menos 1 d. (0 < k). Aceita.
+q0,d,qf,d,>
+# Se ler 'Y', ignora (caso defensivo)
+q0,Y,q0,Y,>
+
+# --- q2: Buscar Match (D) ---
+# Ignora 'b' e 'Y' indo para a direita
+q2,b,q2,b,>
+q2,Y,q2,Y,>
+# Se encontrar 'd', marca como 'Y' (Match feito) e volta (q3)
+q2,d,q3,Y,<
+# Se chegar no final (_) procurando match para um 'b', REJEITA (falta d)
+# (Nao precisa escrever regra, ele trava e rejeita automatico)
+
+# --- q3: Retornar para o X ---
+# Volta para esquerda ignorando tudo
+q3,b,q3,b,<
+q3,Y,q3,Y,<
+q3,d,q3,d,<
+# Quando encontrar o X que marcamos, vai para direita ver o proximo (q4)
+q3,X,q4,X,>
+
+# --- q4: Decidir proximo passo ---
+# Se encontrar outro 'b', repete o ciclo (vai para q2)
+q4,b,q2,X,>
+# Se encontrar 'd', acabaram os 'b's e achamos um 'd' sobrando. (j < k). ACEITA.
+q4,d,qf,d,>
+# Se encontrar 'Y', acabaram os 'b's, mas so tem 'd' marcado na frente.
+# Precisamos verificar se ha um 'd' livre la na frente (q5)
+q4,Y,q5,Y,>
+
+# --- q5: Verificar Estrita Desigualdade (Busca d extra) ---
+# Passa pelos Ys ja marcados
+q5,Y,q5,Y,>
+# Se achar um 'd' livre, ACEITA (tinhamos j b's e agora achamos k > j)
+q5,d,qf,d,>
+# Se acabar a fita (_) so vendo Y, entao j = k. REJEITA.

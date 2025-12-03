@@ -1,0 +1,29 @@
+# Linguagem: Numeros binarios multiplos de 3
+# Exemplos Aceitos: 0, 11 (3), 110 (6), 1001 (9), 1100 (12)
+# Exemplos Rejeitados: 1 (1), 10 (2), 100 (4), 101 (5)
+
+fita 110
+init q0
+accept qf
+
+# --- q0 (Resto 0) ---
+# Lendo 0: (0 * 2 + 0) mod 3 = 0. Mantem q0.
+q0,0,q0,0,>
+# Lendo 1: (0 * 2 + 1) mod 3 = 1. Vai para q1.
+q0,1,q1,1,>
+# Se acabar a fita (_) estando em q0, o numero eh multiplo. Aceita.
+q0,_,qf,_,>
+
+# --- q1 (Resto 1) ---
+# Lendo 0: 1 * 2 mod 3 = 2. Vai para q2.
+q1,0,q2,0,>
+# Lendo 1: 1 * 2 + 1 mod 3 = 0. Vai para q0.
+q1,1,q0,1,>
+# Se acabar a fita aqui, o resto eh 1. Rejeita (sem transicao).
+
+# --- q2 (Resto 2) ---
+# Lendo 0: (2 * 2 + 0) mod 3 = 1. Vai para q1.
+q2,0,q1,0,>
+# Lendo 1: (2 * 2 + 1) mod 3 = 2. Mantem q2.
+q2,1,q2,1,>
+# Se acabar a fita aqui, o resto eh 2. Rejeita (sem transicao).

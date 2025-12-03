@@ -1,0 +1,35 @@
+# Linguagem: a^(2^n) n>=1 -> Potencias de 2
+# Aceita: a (1), aa (2), aaaa (4), aaaaaaaa (8)
+# Rejeita: aaa (3), aaaaa (5), aaaaaa (6)
+
+fita aaaaaaaa
+init q0
+accept qf
+
+# Marca o primeiro 'a' como 'S' para servir de ancora
+q0,a,q1,S,>
+# Se a fita for vazia ou ja comecar errada
+q0,_,qr,_,>
+
+# --- q1: Busca impar para remover ---
+q1,x,q1,x,>
+# Se encontrar 'a', corta ele (vira 'x') e vai verificar se tem par (q2)
+q1,a,q2,x,>
+q1,_,qf,_,>
+
+# --- q2: O Busca par para manter ---
+q2,x,q2,x,>
+q2,a,q3,a,>
+q2,_,q_back,_,<
+
+
+# igual ao q1, mas se acabar a fita aqui, REJEITA.
+# (Pois significa que tinhamos Impar > 1. Ex: S, x, a -> Fim)
+q3,x,q3,x,>
+q3,a,q2,x,>
+
+
+# --- q_back: Retorna para o Inicio ---
+q_back,a,q_back,a,<
+q_back,x,q_back,x,<
+q_back,S,q1,S,>
