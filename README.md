@@ -1,4 +1,4 @@
-﻿# 📠 Simulador de Máquina de Turing
+﻿# Simulador de Máquina de Turing
 
 Este projeto é uma implementação de um **Simulador de Máquina de Turing** em Python, com uma interface gráfica (GUI) desenvolvida em **Tkinter**. O simulador permite visualizar a fita, o estado atual, as transições e o movimento do cabeçote passo a passo.
 
