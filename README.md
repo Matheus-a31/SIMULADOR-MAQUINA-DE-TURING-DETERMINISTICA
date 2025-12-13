@@ -2,7 +2,7 @@
 
 Este projeto é uma implementação de um **Simulador de Máquina de Turing** em Python, com uma interface gráfica (GUI) desenvolvida em **Tkinter**. O simulador permite visualizar a fita, o estado atual, as transições e o movimento do cabeçote passo a passo.
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
 * **Interface Gráfica:** Visualização clara da fita e da posição do cabeçote.
 * **Carregamento Dinâmico:** Leitura de definições da máquina (estados, transições, fita inicial) a partir de arquivos `.txt`.
@@ -13,7 +13,7 @@ Este projeto é uma implementação de um **Simulador de Máquina de Turing** em
 * **Logs Detalhados:** Mostra o histórico de leituras, escritas e mudanças de estado.
 * **Feedback Visual:** Indica claramente se a palavra foi **ACEITA** ou **REJEITADA** (ou se a máquina travou).
 
-## 📂 Estrutura do Projeto
+## Estrutura do Projeto
 
 * `Interface.py`: Arquivo principal. Gerencia a GUI e o loop de eventos.
 * `Machine.py`: O "motor" do simulador. Gerencia a fita, o cabeçote e a lógica de execução.
@@ -21,7 +21,7 @@ Este projeto é uma implementação de um **Simulador de Máquina de Turing** em
 * `State.py`: Representa um estado da máquina e armazena suas transições.
 * `Transition.py` & `Edge.py`: Definem as regras de mudança (o que ler, o que escrever, para onde mover).
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 * Python 3.x instalado.
@@ -38,7 +38,7 @@ python Interface.py
 
 4.  Na janela que abrir, clique em **📂 Carregar input.txt** e selecione um arquivo de configuração válido.
 
-## 📝 Formato do Arquivo de Entrada (.txt)
+## Formato do Arquivo de Entrada (.txt)
 
 Para testar suas próprias Máquinas de Turing, crie um arquivo `.txt` seguindo a sintaxe abaixo. O `TuringLoader` interpreta linhas de comando e transições.
 
@@ -87,4 +87,5 @@ q0, _, qfim, _, <
   * **Tratamento de Erros:** O simulador detecta loops infinitos simples (por estouro de memória/tempo) ou travamentos quando não há transição definida para o símbolo lido.
 
 Desenvolvido para fins educacionais.
+
 
