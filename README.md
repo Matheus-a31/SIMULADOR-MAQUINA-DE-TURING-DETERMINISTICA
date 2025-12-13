@@ -81,11 +81,12 @@ q0, 1, q0, 0, >
 q0, _, qfim, _, <
 ```
 
-## 🛠 Detalhes Técnicos
+## Detalhes Técnicos
 
   * **Fita Infinita:** A fita é implementada como uma lista dinâmica que cresce conforme a necessidade (`_range` inicial de 50 células).
   * **Tratamento de Erros:** O simulador detecta loops infinitos simples (por estouro de memória/tempo) ou travamentos quando não há transição definida para o símbolo lido.
 
 Desenvolvido para fins educacionais.
+
 
 
