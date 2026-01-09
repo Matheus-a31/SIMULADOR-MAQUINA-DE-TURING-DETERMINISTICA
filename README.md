@@ -7,8 +7,8 @@ Este projeto é uma implementação de um **Simulador de Máquina de Turing** em
 * **Interface Gráfica:** Visualização clara da fita e da posição do cabeçote.
 * **Carregamento Dinâmico:** Leitura de definições da máquina (estados, transições, fita inicial) a partir de arquivos `.txt`.
 * **Controles de Execução:**
-    * ▶ **Próximo Passo:** Executa uma transição por vez.
-    * ⏩ **Executar Tudo:** Executa automaticamente com controle de velocidade.
+    * **Próximo Passo:** Executa uma transição por vez.
+    * **Executar Tudo:** Executa automaticamente com controle de velocidade.
     * ⟲ **Reiniciar:** Restaura a máquina para o estado inicial.
 * **Logs Detalhados:** Mostra o histórico de leituras, escritas e mudanças de estado.
 * **Feedback Visual:** Indica claramente se a palavra foi **ACEITA** ou **REJEITADA** (ou se a máquina travou).
@@ -36,7 +36,7 @@ Este projeto é uma implementação de um **Simulador de Máquina de Turing** em
 python Interface.py
 ````
 
-4.  Na janela que abrir, clique em **📂 Carregar input.txt** e selecione um arquivo de configuração válido.
+4.  Na janela que abrir, clique em **Carregar input.txt** e selecione um arquivo de configuração válido.
 
 ## Formato do Arquivo de Entrada (.txt)
 
@@ -87,6 +87,7 @@ q0, _, qfim, _, <
   * **Tratamento de Erros:** O simulador detecta loops infinitos simples (por estouro de memória/tempo) ou travamentos quando não há transição definida para o símbolo lido.
 
 Desenvolvido para fins educacionais.
+
 
 
 
